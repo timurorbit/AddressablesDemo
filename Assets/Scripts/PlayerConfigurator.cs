@@ -1,32 +1,43 @@
 ﻿using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 // Used for the Hat selection logic
 public class PlayerConfigurator : MonoBehaviour
 {
-    [SerializeField]
-    private Transform m_HatAnchor;
+    [SerializeField] private Transform m_HatAnchor;
 
-    private ResourceRequest m_HatLoadingRequest;
+    [SerializeField] private AssetReference m_HatAssetReference;
+
+    private AsyncOperationHandle<GameObject> m_HatLoadOpHandle;
 
     void Start()
-    {           
-        SetHat(string.Format("Hat{0:00}", GameManager.s_ActiveHat));
+    {
+        SetHat($"Hat{GameManager.s_ActiveHat:00}");
     }
 
     public void SetHat(string hatKey)
     {
-        m_HatLoadingRequest = Resources.LoadAsync(hatKey);
-        m_HatLoadingRequest.completed += OnHatLoaded;
+        if (!m_HatAssetReference.RuntimeKeyIsValid())
+        {
+            return;
+        }
+
+        m_HatLoadOpHandle = m_HatAssetReference.LoadAssetAsync<GameObject>();
+        
+        m_HatLoadOpHandle.Completed += OnHatLoadComplete;
     }
 
-    private void OnHatLoaded(AsyncOperation asyncOperation)
+    private void OnHatLoadComplete(AsyncOperationHandle<GameObject> asyncOperationHandle)
     {
-        Instantiate(m_HatLoadingRequest.asset as GameObject, m_HatAnchor, false);
+        if (asyncOperationHandle.Status == AsyncOperationStatus.Succeeded)
+        {
+            Instantiate(asyncOperationHandle.Result, m_HatAnchor);
+        }
     }
 
     private void OnDisable()
     {
-        if (m_HatLoadingRequest != null)
-            m_HatLoadingRequest.completed -= OnHatLoaded;
+        m_HatLoadOpHandle.Completed -= OnHatLoadComplete;
     }
 }
