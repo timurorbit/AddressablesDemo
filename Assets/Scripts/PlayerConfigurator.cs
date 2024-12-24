@@ -7,7 +7,8 @@ public class PlayerConfigurator : MonoBehaviour
 {
     [SerializeField] private Transform m_HatAnchor;
 
-    [SerializeField] private AssetReference m_HatAssetReference;
+    [SerializeField]
+    private AssetReferenceGameObject m_HatAssetReference;
 
     private AsyncOperationHandle<GameObject> m_HatLoadOpHandle;
 

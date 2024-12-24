@@ -132,7 +132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HatAnchor: {fileID: 1946178409}
   m_HatAssetReference:
-    m_AssetGUID: 6e65281e8a345ff4ea1b73f2a1578a6d
+    m_AssetGUID: 6c93cb6413eaf5f46bbe190dbbad2651
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
