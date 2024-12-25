@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.UI;
 
 public class Loading : MonoBehaviour
@@ -9,6 +11,8 @@ public class Loading : MonoBehaviour
 
     [SerializeField]
     private Slider m_LoadingSlider;
+    
+    private static AsyncOperationHandle<SceneInstance> m_SceneLoadOpHandle;
 
     [SerializeField]
     private GameObject m_PlayButton, m_LoadingText;
@@ -20,14 +24,13 @@ public class Loading : MonoBehaviour
 
     private IEnumerator loadNextLevel(string level)
     {
-        m_SceneOperation = SceneManager.LoadSceneAsync(level);
-        m_SceneOperation.allowSceneActivation = false;
+        m_SceneLoadOpHandle = Addressables.LoadSceneAsync(level, activateOnLoad: true);
 
-        while (!m_SceneOperation.isDone)
+        while (!m_SceneLoadOpHandle.IsDone)
         {
-            m_LoadingSlider.value = m_SceneOperation.progress;
+            m_LoadingSlider.value = m_SceneLoadOpHandle.PercentComplete;
 
-            if (m_SceneOperation.progress >= 0.9f && !m_PlayButton.activeInHierarchy)
+            if (m_SceneLoadOpHandle.PercentComplete >= 0.9f && !m_PlayButton.activeInHierarchy)
                 m_PlayButton.SetActive(true);
 
             yield return null;
