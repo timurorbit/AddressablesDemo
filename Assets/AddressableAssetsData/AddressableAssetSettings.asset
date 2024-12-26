@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 61a527b74763bf44aa4d6e64af60fee3
   m_currentHash:
     serializedVersion: 2
-    Hash: 00000000000000000000000000000000
+    Hash: 7e70f4345b6a843a8d1572d913fc08ea
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_BundleLocalCatalog: 0
@@ -38,13 +38,17 @@ MonoBehaviour:
     m_Id: 
   m_RemoteCatalogLoadPath:
     m_Id: 
-  m_ContentStateBuildPathProfileVariableName: 
+  m_ContentStateBuildPathProfileVariableName: <default settings path>
   m_CustomContentStateBuildPath: 
   m_ContentStateBuildPath: 
   m_BuildAddressablesWithPlayerBuild: 0
   m_overridePlayerVersion: '[UnityEditor.PlayerSettings.bundleVersion]'
   m_GroupAssets:
   - {fileID: 11400000, guid: a838a85c81fcd7f4c8f5ded8cc042a9e, type: 2}
+  - {fileID: 11400000, guid: 1a24d053085caac42975b5b5a08c6023, type: 2}
+  - {fileID: 11400000, guid: 5c1b6490c0c7e4342afa0bef6a30d2c1, type: 2}
+  - {fileID: 11400000, guid: 35690fb8196214a40932f1982bcb423f, type: 2}
+  - {fileID: 11400000, guid: 182c9057a351d5047b7d31e688325aa2, type: 2}
   - {fileID: 11400000, guid: 0434c79573debc849a7016f9bd1a44a6, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
@@ -143,6 +147,7 @@ MonoBehaviour:
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 8c3a69f2fd04db549a8d12989c19839d, type: 2}
+  - {fileID: 11400000, guid: c97655deec1704545bd2e23c33c999b8, type: 2}
   m_InitializationObjects: []
   m_CertificateHandlerType:
     m_AssemblyName: 
@@ -153,7 +158,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0d88ce2b01829f14784aaf19058ca0dd, type: 2}
   - {fileID: 11400000, guid: 32844b64fc372b24abe39fea24b3e73e, type: 2}
   - {fileID: 11400000, guid: ed83e54044b90164988859dc9c1bcfe9, type: 2}
-  m_ActiveProfileId: 21583647d43072d4da4805ae871f80c8
+  m_ActiveProfileId: 61d69ae015e8fe8498eb12519daf8bdc
   m_HostingServicesManager:
     m_HostingServiceInfos: []
     m_Settings: {fileID: 11400000}
