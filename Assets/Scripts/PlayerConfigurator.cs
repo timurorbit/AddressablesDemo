@@ -12,11 +12,11 @@ public class PlayerConfigurator : MonoBehaviour
 
     private AsyncOperationHandle<IList<GameObject>> m_HatsLoadOpHandle;
     
-    private List<string> m_Keys = new List<string>() {"Hats"};
+    private List<string> m_Keys = new List<string>() {"Hats", "Seasonal"};
 
     void Start()
     {
-        m_HatsLoadOpHandle = Addressables.LoadAssetsAsync<GameObject>(m_Keys, null, Addressables.MergeMode.Union);
+        m_HatsLoadOpHandle = Addressables.LoadAssetsAsync<GameObject>(m_Keys, null, Addressables.MergeMode.Intersection);
         m_HatsLoadOpHandle.Completed += OnHatsLoadComplete;
     }
 
